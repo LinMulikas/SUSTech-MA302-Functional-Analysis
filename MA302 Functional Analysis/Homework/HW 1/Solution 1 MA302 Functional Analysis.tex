@@ -1,0 +1,149 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{authblk}
+
+% 习惯最小的题号用自定义的id命令直接打出来
+% TODO: Self definitions.
+% \newcommand{\id}{\subsubsection*}
+% \newcommand{\fc}{\frac}
+
+\usepackage{geometry}
+% 纸张尺寸大小
+% 也可以手动写 left, right, top, bottom 参数
+\geometry{a4paper, scale = 0.9}
+%\geometry{left = 2.54cm, right = 2.54cm, top = 3.17cm, bottom = 3.17cm}
+
+\usepackage{indentfirst}
+\renewcommand{\baselinestretch}{1.2}
+
+
+
+%TODO: Title
+\title{MA327 Homework 1}
+
+%TODO: Author
+\author{WANG Duolei, SID:12012727}
+\affil{wangdl2020@mail.sustech.edu.cn}
+
+
+
+%TODO: Date
+\date{}
+
+%TODO: Theorem, lemma
+
+
+%TODO: Main document
+\begin{document}
+\maketitle
+\begin{enumerate}
+    \item[2.2] 
+    Considering the following two cases
+    \begin{enumerate}
+        \item The case \(p = \infty\).
+        
+            \begin{itemize}
+                \item Positive definite. 
+                
+                It's clearly because that every metric in \(X_i\) itself is positive define, and there are only absolute value, power function used in all the definition 
+    
+                \item Symmetric. Trivial.
+        
+                \item Traingle Inequality.
+                
+                Considering that
+                \begin{align*}
+                    &\max_i d_i(x_i, y_i)\\
+                    \le &\max_i \{d_i(x_i, z_i) + d_i(z_i, y_i)\}\\
+                    \le &\max_i \{d_i(x_i, z_i)\}
+                \end{align*}
+                
+    
+            \end{itemize}
+    
+        \item The case \(1 \le p < \infty\).
+        
+            \begin{itemize}
+                \item Positive definite. It's clearly.
+                \item Symmetric is trivial.
+                \item Traingle Inequality.
+                
+                Considering that
+                \begin{align*}
+                    d(x, y) &= {[{d_1(x_1, y_1)}^p + {d_2(x_2, y_2)}^p + \cdots + {d_n(x_n, y_n)}^p]}^{1/p}\\
+                    &\le {[{(d_1(x_1, z_1) + d_1(y_1, z_1))}^p + {(d_2(x_2, z_2) + d_2(y_2, z_2))}^{1/p }\cdots + {(d_n(x_n, z_n) + d_n(y_n, z_n))}^p]}^{1/p}\\
+                    &\le {[d_1(x_1, z_1) + d_2(x_2, z_2) + \cdots + d_n(x_n, z_n)]}^{1/p} +{[d_1(x_1, y_1) + d_2(x_2, y_2) + \cdots + d_n(x_n, y_n)]}^{1/p} \\
+                    &= d(x, z) + d(y, z)
+                \end{align*}
+                The last inequality can be proved by the hint with the htlp of mathematical induction.
+            \end{itemize}
+    
+
+    \end{enumerate}
+
+
+\item[2.3]
+    \begin{itemize}
+        \item Positive definite.
+        Considering that
+        \[\hat d = 1 - \frac{1}{1 + d} \ge 0\]
+        and \(\hat d = 0 \iff d = 0 \iff x = y\).
+
+        \item Symmetric. Trivial.
+        \item Traingle Inequality.
+        
+        Let \(a = d(x, z), b = d(y, z), c = d(x, y), f(x) = x/(1 + x)\), it's clearly that \(a, b, c \ge 0\). And let \(f(a) = 1/(1 + d(x, z)), b = 1/(1 + d(y, z)), c = 1/(1 + d(x, y))\), we have already know that \(a + b \ge c\). Assume \(a + b = k \ge c\), firstly, considering the minimum of \(f(a) + f(b)\), note as \(h(a)\), we have
+        \[h(a) = 1 - \frac{1}{a + 1} + 1 - \frac{1}{(1 + k) - a}\]
+        Considering the derivation,
+        \[h'(a) = (k + 2)\frac{(-2a + k)}{{(a + 1)}^2{[a - (k + 1)]}^2}\]
+        thus, 
+        \[f(a) + f(b) = h(a) \ge \min_a h(a) = h(k/2) = \frac{k}{1 + k/2} \ge \frac{k}{1 + k} = f(c)\]
+        Thus, the traingle inequality holds.
+    \end{itemize}
+
+
+\item[2.4]
+    \begin{enumerate}
+        \item[(1).] The \(d\) is a metric for \(s(\mathbb K)\).
+        
+        Firstly, we have proved in 2.3 that \(\hat d = d_0/(1 + d_0)\) is a metric for every \(d_0\) as metric. Thus, we need to prove the traingle inequality for \(d_0(x, y) = |x - y|,\ x, y \in \mathbb{R}\).
+
+        \[d(x, y) = \sum_{i = 1}^{\infty} \hat 2^{-i} \hat d(x_i, y_i) \le \sum_{i = 1}^{\infty} 2^{-i} {(\hat d(x, z) + \hat d(y, z))} = d(x, z) + d(y, z)\]
+
+        Thus, the traingle inequality holds.
+
+        \item[(2).] In a metric space, \({\{x\}}_{i = 1}^\infty \to y \iff {\{x_i\}}_{i = 1}^\infty \to y_i\).
+            \begin{itemize}
+                \item The forward is clearly, that if there exist a coordinate \(x_i\) doesn't converges to \(y_i\).
+                    \[d(x, y) \ge d(x_i, y_i)\]
+                    thus, \(d(x, y)\) can't converges to 0.
+                \item The backward is according to 
+                    \[d(x, y) \le \sum_{i = i}^{N} d(x_i, y_i)\]
+                    Therefore, for every \(\varepsilon > 0\), considering there exist corresponding \({\{N_i\}}_i^N\) such that \(d(x_i, y_i) < \varepsilon/N\). Let \(N_0 = \max\{N_1, \dots, N_N\}\), thus
+                    \[\forall\ n \ge N_0, d(x, y) \le \sum_{i = 1}^{N} d(x_i, y_i) \le N \varepsilon/N = \varepsilon\]
+                    which means that \({\{x_i\}}_{i = 1}^\infty \to y\).
+            \end{itemize}
+    \end{enumerate}
+
+
+
+\item[2.5]
+    \begin{enumerate}
+        \item[(1)] Finite union \(\bigcup_{i = 1}^N F_i\) is closed i.f.f \(\bigcap_{i = 1}^N F_i^c\) is open.
+            Considering an arbitrary point in the finite intersection of complement, as every complement set is open, there exist \(\{B(x, r_1), \ldots, B(x, r_N)\}\) such that \(B(x, r_i) \subset F_i^c \). Considering the intersection of \(B(x, r_i)\) is also open. Thus 
+            \[B(x, r_0) \subset \bigcap_{i = 1}^N F_i^c,\ r_0 := \min\{r_1, \ldots, r_N\}\]
+            Thus, \(x\) is also a interior. Thus, it's open, which also means the finite union of closed set is closed.
+            
+        \item[(2)] Finite intersection. Also considering the complement \(\bigcup_{i = 1}^N F_i^c\), it's clearly that the countable infinite union of open set is union, thus the finite must also, which also means the finite intersection is closed.
+    \end{enumerate}
+
+\end{enumerate}
+
+\end{document}

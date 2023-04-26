@@ -1,0 +1,107 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{authblk}
+
+% 习惯最小的题号用自定义的id命令直接打出来
+% TODO: Self definitions.
+% \newcommand{\id}{\subsubsection*}
+% \newcommand{\fc}{\frac}
+
+\usepackage{geometry}
+% 纸张尺寸大小
+% 也可以手动写 left, right, top, bottom 参数
+\geometry{a4paper, scale = 0.8}
+%\geometry{left = 2.54cm, right = 2.54cm, top = 3.17cm, bottom = 3.17cm}
+
+\usepackage{indentfirst}
+\renewcommand{\baselinestretch}{1.2}
+
+
+
+%TODO: Title
+\title{MA302 Homework 3}
+
+%TODO: Author
+\author{WANG Duolei, SID:12012727}
+\affil{wangdl2020@mail.sustech.edu.cn}
+
+
+
+%TODO: Date
+\date{}
+
+%TODO: Theorem, lemma
+
+
+%TODO: Main document
+\begin{document}
+\maketitle
+
+\subsection*{1. Solution}
+Considering prove by contradiction, assume \(d(A, B) = 0\), thus for every \(\varepsilon_n > 0\), there exist \(x_n \in A,\ y_n \in B\) such that \(0 \le d(x_n, y_n) < \varepsilon\). As \(A\) is compact, thus also sequential compact, there exist subsequence \(\{x_{n_k}\} \to x \in A\). Now considering \(d(x, y_{n_k}) \le d(x, x_{n_k}) + d(x_{n_k}, y_{n_k}) \to 0\), thus \(\{y_{n_k} \to x\}\), and \(B\) is closed, which implies \(x \in B\). Thus \(A \cap B \ne \emptyset
+\).
+
+\subsection*{2. Solution}
+Considering
+\[U_1 := \bigcap_{i = 1}^{\infty} A_i,\quad A_i := \{x \in X : d(x, A) < 1/i\}\]
+also, we define \(U_2\). And claim that \(U_1 \cap U_2  = \emptyset\). Prove it by contradiction.
+
+Firstly, check any point \(x\) in \(U_1\), here must be a sequence \(\{a_n\}\) in \(A\) such that \(\{a_n\} \to x\) as \(\{d(A_i, A)\} \to 0\) and \(x \in U_1\), which is the intersection of \(A_i\). Also, we conclude that there exist \(\{b_n\} \to y\) for every \(y \in U_2\). 
+
+Then, assume \(U_1 \cap U_2 \ne \emptyset\), which means \(\exists x \in U_1 \cap U_2\), then for arbitrary \(\varepsilon > 0\), as \(\{a_n\} \to x, \{b_n\} \to x\), 
+\[d(a_n, b_n) \le d(a_n, x) + d(b_n, x) < \varepsilon/2 + \varepsilon/2\]
+
+Thus, \(d(A, B) = 0\), which is contradict to our hypothesis.
+
+\subsection*{3. Solution}
+
+To begin with, define
+    
+\[diam(A) = \sup_{x, y \in A} d(x, y)\]
+
+\begin{enumerate}
+    \item Firstly, \(T\) is continuous map.
+    
+    \[\forall \varepsilon > 0, let\ \delta = \varepsilon,\ \forall d(x, y) < \delta, d(Tx, Ty) < d(x, y) < \delta = \varepsilon\]
+
+    Thus, \(T\) is continuous, which means \(T^n(Y) := T\cdots T (Y)\) is compact set, also closed.
+
+    \item The intersection of family \(\bigcap_{i = 1}^\infty A_i\) is non-empty, where \(A_i := T^i(Y)\).
+    
+    The closed family \(A\) has the property that any intersection of finite number subsets has non-empty result. Because it's clearly that
+    \[A_{n + 1} \subset A_{n} \subset \cdots \subset A \subset Y\]
+    
+    Thus, all the finite intersetion of \(\{A_i\}_{i = 1}^n\) is non-empty, according to Exercise 2.11, we know that the intersection is non-empty.
+    
+    \item The existence and uniqueness of the limit point.
+    
+    Consider \(diam(T(Y)) \le (1 - \varepsilon) diam(Y), \varepsilon > 0\), thus \(diam(A^{n}) < diam(A^{m})\) for every \(n > m\). Define \(x_n = T^n(x),\ y^n = T^n(y)\), it's clearly that
+
+    \[d(x_n, y_n) \to 0\]
+    
+    as \(diam(A_n) \le {(1 - \varepsilon)}^n  \to 0,\ (n \to \infty)\).
+
+    As all the sequence has a convergent subsequence, assume the limitation of some subsequence \(\{x_{n_k}\}\) is \(a\). Thus
+    \[a \in \bigcap_{i = 1}^\infty A_i \implies a \in T^n(Y),\ \forall n\]
+
+    And all the convergent subsequence of \(\{y_n\}\) must converges to the same point \(a\), otherwise suppose the limit is \(b\). Then
+    \[d(x_{n_k}, y_{m_j}) < diam(A_{\min n_k, m_j}) \to 0\]
+
+    which is contradict to \(d(a, b) > 0\) as \(d(a, b) \le d(a, x_{n_k}) + d(x_{n_k}, y_{m_j}) + d(y_{m_j}, b) \to 0\).
+
+    Thus there exist an unique point in the intersection.
+
+    \item The limit point is the fixed point. 
+    
+    Prove it by contradiction. Here claim that \(Ta = a\), otherwise, \(Ta = b,\ a \ne b\), as \(d(A_n) \ge d(a, b) > 0\), which is contradict to \(diam(A_n) \to 0\).
+\end{enumerate}
+Above all has shown that the map must has an unique fixed point.
+
+\end{document}

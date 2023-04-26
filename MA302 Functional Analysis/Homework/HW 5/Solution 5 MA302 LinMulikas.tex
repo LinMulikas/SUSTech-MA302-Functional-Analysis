@@ -1,0 +1,103 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{authblk}
+
+% 习惯最小的题号用自定义的id命令直接打出来
+% TODO: Self definitions.
+% \newcommand{\id}{\subsubsection*}
+% \newcommand{\fc}{\frac}
+
+\usepackage{geometry}
+% 纸张尺寸大小
+% 也可以手动写 left, right, top, bottom 参数
+\geometry{a4paper, scale = 0.8}
+%\geometry{left = 2.54cm, right = 2.54cm, top = 3.17cm, bottom = 3.17cm}
+
+\usepackage{indentfirst}
+\renewcommand{\baselinestretch}{1.2}
+
+
+
+%TODO: Title
+\title{MA302 Homework 5}
+
+%TODO: Author
+\author{WANG Duolei, SID:12012727}
+\affil{wangdl2020@mail.sustech.edu.cn}
+
+
+
+%TODO: Date
+\date{}
+
+%TODO: Theorem, lemma
+
+
+%TODO: Main document
+\begin{document}
+
+\maketitle
+
+
+\subsection*{4.7 Solution}
+\begin{enumerate}
+    \item Necessary.
+    
+    Considering
+    \[x(t) = x_0 + \int_0^t f(x(s)) ds,\ t \in [0, T]\]
+
+    Derivate the equation with variable \(t\), one can get 
+    \[\dot x(t) = f(x(t)) \implies \dot x = f(x)\]
+    And \(x(t) = x_0\) is also cleary.
+
+    \item Sufficient.
+    
+    Considering integrate the equation, and use the initial condition, one can derive the formula
+    \[x(t) = x_0 + \int_{0}^t f(x(s)) ds\]
+\end{enumerate}
+
+
+\subsection*{4.8 Solution}
+According the conclusion in 4.7, one can get that the uniqueness of the solution is equivalent to the uniqueness of the integral from.
+
+Considering an operator \(I\) by 
+\[I(x) = x_0 + \int_0^t f(x(s)) ds \]
+
+One can notice that 
+\begin{align*}
+    |I(x_1) - I(x_2)| &= |\int_{0}^t f(x_1(s)) ds + \int_{0}^t f(x_2(s)) ds |\\
+    &\le \int_{0}^t |f(x_1(s)) - f(x_2(s))| ds\\
+    &\le L \int_{0}^t |x_1 - x_2| ds \\
+    &\le L \int_{0}^t \|x_1 - x_2\|_{\infty} \\
+\end{align*}
+
+thus
+\[\|I(x_1) - I(x_2)\|_{\infty} \le LT\|x_1 - x_2\|_{\infty}\]
+
+When \(LT < 1\), the operator \(I\) is a contraction, thus has an unique fixed point. And the unique solution in any subinterval of \([0, T]\) has a condition \(LT' \le LT < 1\), which also means the unique solution exist. And use the initial condition \(x_0\), one can derive that the solution in any interval \([0, t]\) has the same formula, thus in the interval \([a, b] \subseteq [0, T]\).
+
+\subsection*{5.4 Solution}
+Considering \(x\) is a point in \(X - Y\), then there exist \((y_i)\) such that \(d(x, Y) = \lim_{i \to \infty}\|x - y_i\|\). As \(Y\) is a subspace thus closed, and there exist some subsequece such that \((y_{i_k})\) converges to a point \(y \in Y\). Considering the sequence \(\|x - y_{i_k}\|\), as \(\|\cdot\|\) is a continuous function, is also converges. Thus \(\|x - y_{i_k}\| \to \|x - y\| = dist(x, Y)\), with \(y \in Y\).
+
+
+\subsection*{5.6 Solution}
+Considering \(Y\) is a proper subspace of \(X\). There exist \(x \in X - Y\), which means that \(dist(x, Y) = \varepsilon > 0\). Otherwise, if \(dist(x, Y) = 0\), there exist \((y_n) \in Y\) such that \(\|y_n - x\| \to 0\), what's more, existence of \((y_{n_k}) \to x\) implies \(x\) is a limit point of \(Y\) thus \(x \in Y\), which is contradict to the hypothesis. Thus 
+\[\forall\ r > 0, dist(\frac{r}{\varepsilon}x, Y) = \frac{r}{\varepsilon}dist(x, Y) = r\]
+
+\subsection*{5.7 Solution}
+Considering \((e_i)_{i = 1}^\infty\) is a Hamel Basis of \(X\), define \(X_n = Span((e_i)_{i = 1}^n)\). Considering \(y_i\) by \(y_i \in X_i\) and choose \(dist(y_i, X_{i - 1}) = 3^{-i}\). 
+
+Thus \((y_i)_{i = 1}^n\) is Cauchy but can't has a limitation in any \(X_n\) as 
+\[d(y_{n + k + 1}, X_n) \ge 3{-n} - \sum_{i = 1}^k 3^{-(n + i)} \ge 3^{-n} - \sum_{i = 1}^\infty 3^{-(n + i)} = \frac{1}{2} 3^{-n} > 0\]
+
+Thus we got a contradiction.
+
+
+\end{document}

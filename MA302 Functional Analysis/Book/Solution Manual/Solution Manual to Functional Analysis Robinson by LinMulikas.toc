@@ -1,0 +1,36 @@
+\contentsline {part}{I\hspace {1em}Preliminaries}{2}{part.1}%
+\contentsline {section}{\numberline {1}Vector Space}{2}{section.1}%
+\contentsline {section}{\numberline {2}Metric Space}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Solution}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Solution}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Solution}{2}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Solution}{3}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Solution}{3}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Solution}{3}{subsection.2.6}%
+\contentsline {subsection}{\numberline {2.7}Solution}{3}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}Solution}{4}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}Solution}{4}{subsection.2.9}%
+\contentsline {subsection}{\numberline {2.10}Solution}{4}{subsection.2.10}%
+\contentsline {subsection}{\numberline {2.11}Solution}{4}{subsection.2.11}%
+\contentsline {subsection}{\numberline {2.12}Solution}{4}{subsection.2.12}%
+\contentsline {subsection}{\numberline {2.13}Solution}{4}{subsection.2.13}%
+\contentsline {subsection}{\numberline {2.14}Solution}{5}{subsection.2.14}%
+\contentsline {section}{\numberline {3}Norms and Normed Spaces}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Solution}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}}{5}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}}{5}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}}{5}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}Solution}{5}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}Solution}{6}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}Solution}{6}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.8}Solution}{6}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}Solution}{7}{subsection.3.9}%
+\contentsline {subsection}{\numberline {3.10}}{7}{subsection.3.10}%
+\contentsline {subsection}{\numberline {3.11}Solution}{7}{subsection.3.11}%
+\contentsline {subsection}{\numberline {3.12}Solution}{7}{subsection.3.12}%
+\contentsline {subsection}{\numberline {3.13}Solution}{7}{subsection.3.13}%
+\contentsline {subsection}{\numberline {3.14}}{8}{subsection.3.14}%
+\contentsline {subsection}{\numberline {3.15}}{8}{subsection.3.15}%
+\contentsline {subsection}{\numberline {3.16}Solution}{8}{subsection.3.16}%
+\contentsline {section}{\numberline {4}Complete Normed Spaces}{8}{section.4}%
+\contentsline {section}{\numberline {5}Finite Dimension Normed Spaces}{9}{section.5}%

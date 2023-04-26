@@ -1,0 +1,113 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{authblk}
+
+% 习惯最小的题号用自定义的id命令直接打出来
+% TODO: Self definitions.
+% \newcommand{\id}{\subsubsection*}
+% \newcommand{\fc}{\frac}
+
+\usepackage{geometry}
+% 纸张尺寸大小
+% 也可以手动写 left, right, top, bottom 参数
+\geometry{a4paper, scale = 0.8}
+%\geometry{left = 2.54cm, right = 2.54cm, top = 3.17cm, bottom = 3.17cm}
+
+\usepackage{indentfirst}
+\renewcommand{\baselinestretch}{1.2}
+
+
+
+%TODO: Title
+\title{MA302 Homework 2}
+
+%TODO: Author
+\author{WANG Duolei, SID:12012727}
+\affil{wangdl2020@mail.sustech.edu.cn}
+
+
+
+%TODO: Date
+\date{}
+
+%TODO: Theorem, lemma
+
+
+%TODO: Main document
+\begin{document}
+\maketitle
+
+
+
+\subsection*{2.7 Solution}
+Assume \(A \subset X\) is an open set, \(\forall x \in A,\ \exists\ B(x, r)\) with \(r > 0\) such that \(B(x, r) \subset A\), as every point in \(A\) is an interior. Because every open ball \(B(x_i, r_i)\) is containned in \(A\), we have \(\bigcup_{i \in I}B(x_i, r_i) \subset A\). And for every \(x_i \in A\), \(x \subset B(x_i, r_i) \implies A \subset \bigcup_{i \in I} B(x_i, r_i)\). Above all shows that \(A = \bigcup_{i \in I} B(x_i, r_i)\).
+
+
+
+\subsection*{2.9 Solution}
+Assume \(E \subseteq X,\ F \subseteq Y\) are the corresponding densen countable subset, then \(E \times F\) is also countable. We need to check whether it's dense. Considering \((x_0, t_0) \in X \times Y\) is an arbitrary point, then there exists \(\{x_n\} \to x_0,\ \{y_n\} \to y_0\) as the subspaces are dense. Considering the \(d_p\) is a metric, which has been proved in 2.2. Thus 
+\[d_p((x_0, y_0), (x_n, y_m)) \le d_p((x_0, y_0), (x_n, y_0)) + d_p((x_n, y_0), (x_n, y_m))\]
+
+For every \(\varepsilon > 0\), there exists \(N_x \in \mathbb N\) such that
+
+\[d_p((x_0, y_0), (x_n, y_0)) = d_X(x_0, x_n) < \varepsilon/2\]
+
+as \(\{x_n\} \to x_0\) in \(X\) and \(d_Y(y_0, y_0) = 0\). And also, for every given \(\varepsilon > 0\), there exists \(N_y \in \mathbb N\), such that
+
+\[d_p((x_n, y_0), (x_n, y_m)) = d_Y(y_0, y_m) < \varepsilon/2 \] 
+
+Thus, for every \(N \ge \max\{N_x, N_y\}\), we have 
+
+\[d_p((x_0, y_0), (x_n, y_m)) \le d_p((x_0, y_0), (x_n, y_0)) + d_p((x_n, y_0), (x_n, y_m)) < \varepsilon\]
+
+\subsection*{2.10 Solution}
+
+Fistly, \(F_\alpha\) is closed, which means \(\bigcap_{\alpha \in A} F_\alpha\) is also closed. We prove by contradiction. Considering the intersection is empty, thus its complement has the property
+
+\[\bigcup_{\alpha \in A}F_\alpha^c = X\]
+
+As \(X\) is compact, we can find a finite subcover such that
+
+\[\bigcup_{i = 1}^n F_{\alpha_i} = X,\ \alpha_i \in A\]
+
+It means \(\bigcap_{i = 1}^n F_{\alpha_i} = \emptyset\), which is contradict to our hypothesis.
+
+\subsection*{2.11 Solution}
+
+According to the definition of \(F_j,\ j \in \mathbb N^+\), we can conclude that \(\bigcap_{i = 1}^n F_i = F_{i_0} \ne \emptyset, i_0 := \min\{1, 2, \ldots, n\}\). Thus the collection of \(F\) has the same hypothesis with 2.10, and also \(X\) is compact. Thus \(\bigcap_{j \in \mathbb N^+} F_j = \bigcap_{j = 1}^\infty F_j \ne \emptyset\).
+
+\subsection*{2.12 Solution}
+
+Assume \(x = \sup(S)\), then \(\forall s \in S,\ x \ge s\) and \(\forall 1/n > 0,\ \exists x_n \in S,\ x_n > x - 1/n\). Thus \(d(x_n, x) < 1/n\), \(\{x_n\} \to x\). And \(S\) is closed, every limit point must lies in \(S\), which means \(x = \sup(S) \in S\).
+
+\subsection*{2.13 Solution}
+
+Considering \(X\) is compact and \(f\) is continuous, for every compact subset \(U \subseteq X\), we have \(f(u)\) is also compact. And in metric space \((X, d)\), compact implies closed. Thus \(f(U) = {(f^{-1})}^{-1} (U)\) is closed for every closed subset \(U \in X\), which means $f^{-1}$ is continuous.
+
+\subsection*{2.14 Solution}
+\begin{enumerate}
+    \item Firstly, we prove that any compact metric space is separable.
+    
+    For every \(n \in \mathbb N^+\), considering \(X \subseteq \bigcup_{x \in X}B_x(x, 1/n)\), which is also an open cover, thus there exists an finite subcover \(X \subseteq \bigcup_{i = 1}^{k(n)} B_{x_i}(x, 1/n)\). Considering the countable subset 
+    \begin{align*}
+        &x_{1, 1}, x_{1, 2}, \ldots, x_{1, k(1)}\\
+        &x_{2, 1}, x_{2, 2}, \ldots, x_{2, k(2)}\\
+        &\cdots\\
+        &x_{n, 2}, x_{2, 2}, \ldots, x_{n, k(n)}\\
+        &\cdots\\
+    \end{align*}
+    It's clearly that there exist \(x_{n, i} \in X\) such that \(d(x, x_{n, i}) < 1/n,\ \forall x \in X, \forall i \in \{1, 2, \ldots, k(n)\}\). Thus choose a point in every row, such that the sequence has points \(x_{n, i}\) satisfying \(d(x, x_{n, i}) < 1/n,\ \forall x \in X, \forall i \in \{1, 2, \ldots, k(n)\}\). The subsequece has limit point \(x\). Thus, the countable set is dense in \(X\). Thus \(X\) is separable.
+
+    \item Considering the construction of the countable subset, and choose a sequence converges to \(x\), we have
+    \[d(x, x_k) < \varepsilon,\ \forall k \ge N = floor(\frac{1}{\varepsilon}) + 1\]
+    Thus there exist \(M(\varepsilon) = N + 1\), such that \(d(x, x_M) < \varepsilon\).
+\end{enumerate}
+
+\end{document}

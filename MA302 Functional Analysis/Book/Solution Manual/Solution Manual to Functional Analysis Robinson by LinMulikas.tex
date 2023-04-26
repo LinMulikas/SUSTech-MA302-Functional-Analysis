@@ -1,0 +1,500 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{authblk}
+\usepackage[hidelinks]{hyperref}
+% TODO: Table of content
+
+
+% 习惯最小的题号用自定义的id命令直接打出来
+% TODO: Self definitions.
+% \newcommand{\id}{\subsubsection}
+% \newcommand{\fc}{\frac}
+
+% TODO: 纸张大小
+\usepackage{geometry}
+% 纸张尺寸大小
+% 也可以手动写 left, right, top, bottom 参数
+\geometry{a4paper, scale = 0.9}
+%\geometry{left = 2.54cm, right = 2.54cm, top = 3.17cm, bottom = 3.17cm}
+
+\usepackage{indentfirst}
+\renewcommand{\baselinestretch}{1.2}
+
+%TODO: Title
+\title{Solution to Functional Analysis, Robinson}
+
+%TODO: Author
+\author[1]{Duolei Wang}
+\affil[1]{Department of Mathematics }
+
+
+
+%TODO: Date
+\date{}
+
+%TODO: Theorem, lemma
+
+
+%TODO: Section counter
+%TODO: Main document
+\begin{document}
+
+%TODO: Title Page
+\linespread{2.0}
+
+\begin{titlepage}
+    \vspace*{\fill}
+    \centering{
+        \Huge{Solution to Functional Analysis}\\
+        \huge{Duolei Wang}\\
+        \large{UG, Department of Mathematics, SUSTech}\\
+        \texttt{wangdl2020@mail.sustech.edu.cn}\\
+    }
+    \vspace*{\fill}
+\end{titlepage}
+
+
+\newpage
+
+\tableofcontents
+
+
+\newpage
+\part[Preliminaries]{Preliminaries}
+\section{Vector Space}
+
+
+\section{Metric Space}
+
+\subsection{Solution}
+
+\subsection{Solution}
+Considering the following two cases
+
+\begin{enumerate}
+    \item The case \(p = \infty\).
+    
+        \begin{itemize}
+            \item Positive definite. 
+            
+            It's clearly because that every metric in \(X_i\) itself is positive define, and there are only absolute value, power function used in all the definition 
+
+            \item Symmetric. Trivial.
+    
+            \item Traingle Inequality.
+            
+            Considering that
+            \begin{align*}
+                &\max_i d_i(x_i, y_i)\\
+                \le &\max_i \{d_i(x_i, z_i) + d_i(z_i, y_i)\}\\
+                \le &\max_i \{d_i(x_i, z_i)\}
+            \end{align*}
+            
+
+        \end{itemize}
+
+    \item The case \(1 \le p < \infty\).
+    
+        \begin{itemize}
+            \item Positive definite. It's clearly.
+            \item Symmetric is trivial.
+            \item Traingle Inequality.
+            
+            Considering that
+            \begin{align*}
+                d(x, y) &= {[{d_1(x_1, y_1)}^p + {d_2(x_2, y_2)}^p + \cdots + {d_n(x_n, y_n)}^p]}^{1/p}\\
+                &\le {[{(d_1(x_1, z_1) + d_1(y_1, z_1))}^p + {(d_2(x_2, z_2) + d_2(y_2, z_2))}^{1/p }\cdots + {(d_n(x_n, z_n) + d_n(y_n, z_n))}^p]}^{1/p}\\
+                &\le {[d_1(x_1, z_1) + d_2(x_2, z_2) + \cdots + d_n(x_n, z_n)]}^{1/p} +{[d_1(x_1, y_1) + d_2(x_2, y_2) + \cdots + d_n(x_n, y_n)]}^{1/p} \\
+                &= d(x, z) + d(y, z)
+            \end{align*}
+            The last inequality can be proved by the hint with the htlp of mathematical induction.
+        \end{itemize}
+
+
+\end{enumerate}
+
+
+\subsection{Solution}
+\begin{itemize}
+    \item Positive definite.
+    Considering that
+    \[\hat d = 1 - \frac{1}{1 + d} \ge 0\]
+    and \(\hat d = 0 \iff d = 0 \iff x = y\).
+
+    \item Symmetric. Trivial.
+    \item Traingle Inequality.
+    
+    Note that the function
+    \[f(x) = 1 - 1/(1 + x),\ x \in \mathbb{R^+} \]
+    is monotonic increasing and convex. And \(\hat d(x, y)= f(d(x, y))\)
+
+    Thus,
+    \begin{align*}
+        &d(x, y) 
+        \le d(x, z) + d(y, z)\\
+    \implies& f(d(x, y)) \le f(d(x, z) + d(y, z)) \le f(d(x, z)) + f(d(y, z))\\
+    \implies& \hat d(x, y) \le \hat d(x, z) + \hat d(y, z)\\
+    \end{align*}
+    which means the traingle inequality holds.
+\end{itemize}
+
+
+\subsection{Solution}
+Note that here the metric induced by a same increasing convex in 2.3, and the image of \(f\) is \(\mathbb{R^+}\) exactly. Thus, the metric defined in 2.4 is uniformly converges by comparasion law of series.
+\begin{enumerate}
+    \item[(1)] Sufficient.
+    
+    For every given \(i\), we have
+    \[d_i(x_i, y_i) \le 2^i d(x, y)\]
+
+    Thus, when \(d(x, y)\) converges to 0, \(d_i(x_i, y_i)\) converges to 0, which means that \({(x^{(n)})} \to y^{(j)}\).
+    \item[(2)] Necessary.
+    
+    Considering that
+    \[d(x, y) = \sum_{i = 1}^{\infty}\frac{1}{2^i} d(x_i, y_i) \le \sum_{i = 1}^{\infty} d_i(x_i, y_i)\]
+    Thus, \({(x)}_n\) must be convergent when \({{(x)}^{(n)}}_n\) converges.
+\end{enumerate}
+
+
+
+\subsection{Solution}
+\begin{enumerate}
+    \item[(1)] Finite union \(\bigcup_{i = 1}^N F_i\) is closed i.f.f \(\bigcap_{i = 1}^N F_i^c\) is open.
+        Considering an arbitrary point in the finite intersection of complement, as every complement set is open, there exist \(\{B(x, r_1), \ldots, B(x, r_N)\}\) such that \(B(x, r_i) \subset F_i^c \). Considering the intersection of \(B(x, r_i)\) is also open. Thus 
+        \[B(x, r_0) \subset \bigcap_{i = 1}^N F_i^c,\ r_0 := \min\{r_1, \ldots, r_N\}\]
+        Thus, \(x\) is also a interior. Thus, it's open, which also means the finite union of closed set is closed.
+        
+    \item[(2)] Finite intersection. Also considering the complement \(\bigcup_{i = 1}^N F_i^c\), it's clearly that the countable infinite union of open set is union, thus the finite must also, which also means the finite intersection is closed.
+\end{enumerate}
+
+\subsection{Solution}
+
+\subsection{Solution}
+Assume \(A \subset X\) is an open set, \(\forall x \in A,\ \exists\ B(x, r)\) with \(r > 0\) such that \(B(x, r) \subset A\), as every point in \(A\) is an interior. Because every open ball \(B(x_i, r_i)\) is containned in \(A\), we have \(\bigcup_{i \in I}B(x_i, r_i) \subset A\). And for every \(x_i \in A\), \(x \subset B(x_i, r_i) \implies A \subset \bigcup_{i \in I} B(x_i, r_i)\). Above all shows that \(A = \bigcup_{i \in I} B(x_i, r_i)\).
+
+\subsection{Solution}
+
+
+\subsection{Solution}
+Assume \(E \subseteq X,\ F \subseteq Y\) are the corresponding densen countable subset, then \(E \times F\) is also countable. We need to check whether it's dense. Considering \((x_0, t_0) \in X \times Y\) is an arbitrary point, then there exists \(\{x_n\} \to x_0,\ \{y_n\} \to y_0\) as the subspaces are dense. Considering the \(d_p\) is a metric, which has been proved in 2.2. Thus 
+\[d_p((x_0, y_0), (x_n, y_m)) \le d_p((x_0, y_0), (x_n, y_0)) + d_p((x_n, y_0), (x_n, y_m))\]
+
+For every \(\varepsilon > 0\), there exists \(N_x \in \mathbb N\) such that
+
+\[d_p((x_0, y_0), (x_n, y_0)) = d_X(x_0, x_n) < \varepsilon/2\]
+
+as \(\{x_n\} \to x_0\) in \(X\) and \(d_Y(y_0, y_0) = 0\). And also, for every given \(\varepsilon > 0\), there exists \(N_y \in \mathbb N\), such that
+
+\[d_p((x_n, y_0), (x_n, y_m)) = d_Y(y_0, y_m) < \varepsilon/2 \] 
+
+Thus, for every \(N \ge \max\{N_x, N_y\}\), we have 
+
+\[d_p((x_0, y_0), (x_n, y_m)) \le d_p((x_0, y_0), (x_n, y_0)) + d_p((x_n, y_0), (x_n, y_m)) < \varepsilon\]
+
+\subsection{Solution}
+
+Fistly, \(F_\alpha\) is closed, which means \(\bigcap_{\alpha \in A} F_\alpha\) is also closed. We prove by contradiction. Considering the intersection is empty, thus its complement has the property
+
+\[\bigcup_{\alpha \in A}F_\alpha^c = X\]
+
+As \(X\) is compact, we can find a finite subcover such that
+
+\[\bigcup_{i = 1}^n F_{\alpha_i} = X,\ \alpha_i \in A\]
+
+It means \(\bigcap_{i = 1}^n F_{\alpha_i} = \emptyset\), which is contradict to our hypothesis.
+
+\subsection{Solution}
+
+According to the definition of \(F_j,\ j \in \mathbb N^+\), we can conclude that \(\bigcap_{i = 1}^n F_i = F_{i_0} \ne \emptyset, i_0 := \min\{1, 2, \ldots, n\}\). Thus the collection of \(F\) has the same hypothesis with 2.10, and also \(X\) is compact. Thus \(\bigcap_{j \in \mathbb N^+} F_j = \bigcap_{j = 1}^\infty F_j \ne \emptyset\).
+
+\subsection{Solution}
+
+Assume \(x = \sup(S)\), then \(\forall s \in S,\ x \ge s\) and \(\forall 1/n > 0,\ \exists x_n \in S,\ x_n > x - 1/n\). Thus \(d(x_n, x) < 1/n\), \(\{x_n\} \to x\). And \(S\) is closed, every limit point must lies in \(S\), which means \(x = \sup(S) \in S\).
+
+\subsection{Solution}
+
+Considering \(X\) is compact and \(f\) is continuous, for every compact subset \(U \subseteq X\), we have \(f(u)\) is also compact. And in metric space \((X, d)\), compact implies closed. Thus \(f(U) = {(f^{-1})}^{-1} (U)\) is closed for every closed subset \(U \in X\), which means $f^{-1}$ is continuous.
+
+\subsection{Solution}
+\begin{enumerate}
+    \item Firstly, we prove that any compact metric space is separable.
+    
+    For every \(n \in \mathbb N^+\), considering \(X \subseteq \bigcup_{x \in X}B_x(x, 1/n)\), which is also an open cover, thus there exists an finite subcover \(X \subseteq \bigcup_{i = 1}^{k(n)} B_{x_i}(x, 1/n)\). Considering the countable subset 
+    \begin{align*}
+        &x_{1, 1}, x_{1, 2}, \ldots, x_{1, k(1)}\\
+        &x_{2, 1}, x_{2, 2}, \ldots, x_{2, k(2)}\\
+        &\cdots\\
+        &x_{n, 2}, x_{2, 2}, \ldots, x_{n, k(n)}\\
+        &\cdots\\
+    \end{align*}
+    It's clearly that there exist \(x_{n, i} \in X\) such that \(d(x, x_{n, i}) < 1/n,\ \forall x \in X, \forall i \in \{1, 2, \ldots, k(n)\}\). Thus choose a point in every row, such that the sequence has points \(x_{n, i}\) satisfying \(d(x, x_{n, i}) < 1/n,\ \forall x \in X, \forall i \in \{1, 2, \ldots, k(n)\}\). The subsequece has limit point \(x\). Thus, the countable set is dense in \(X\). Thus \(X\) is separable.
+
+    \item Considering the construction of the countable subset, and choose a sequence converges to \(x\), we have
+    \[d(x, x_k) < \varepsilon,\ \forall k \ge N = floor(\frac{1}{\varepsilon}) + 1\]
+    Thus there exist \(M(\varepsilon) = N + 1\), such that \(d(x, x_M) < \varepsilon\).
+    
+\end{enumerate}
+
+\section{Norms and Normed Spaces}
+
+% 3.1
+\subsection{Solution}
+\begin{itemize}
+    \item Translation invariant.
+    
+    Considering
+    \begin{align*}
+        d(x + z, y + z) &= \|x + z - (y + z)\|\\
+        &= \|x - y\|\\
+        &= d(x, y)\\
+    \end{align*}
+
+    \item Homogeneous.
+    
+    Considering
+    \begin{align*}
+        d(tx, ty) &= \|tx - ty\|\\
+        &= |t|\|x - y\|\\
+        &= |t|d(x, y)\\
+    \end{align*}
+\end{itemize}
+
+% 3.2
+\subsection{}
+
+% 3.3
+\subsection{}
+
+% 3.4
+\subsection{}
+
+% 3.5
+\subsection{Solution}
+\begin{enumerate}
+    \item The inequality.
+    
+    Considering the left inequality, it's clearly as \(m^p\) is actually a part of the right side. 
+
+    Considering that \(|x_j|^p \le m,\ \forall j\), the right side is clearly holds.
+
+    \item The limitation.
+    
+    Considering
+    \begin{align*}
+        {(m^p)}^{1/p} &\le (\sum_{j = 1}^n |x_j|^p)^{1/p} \le {(nm^p)}^{1/p} \\
+        \implies \|x\|_{l^\infty} &\le \|x\|_{l^p} \le n^{1/p}\|x\|_{l^\infty}\\
+    \end{align*}
+    And \(\lim_{p \to \infty} n^{1/p} = 1,\ \forall n \ge 1\). Thus 
+    \(\|x\|_{l^\infty} = \lim_{p \to \infty}\|x\|_{l^p}\)
+\end{enumerate}
+
+% 3.6
+\subsection{Solution}
+Firstly, considering that in a finite dimension vector space, the property
+\[\|\cdot\|_{l^\infty} < \|\cdot\|_{l^p} \le n^{1/p}\|\cdot\|_{l^\infty}\]
+
+holds.
+
+And for arbitrary vector space, \(\mathbf{x} \in {l}^1\) implies it can minus some remainder to be approximate by finite dimension vector with arbitrary precise. Note the vector as \(x\)
+
+Thus
+\[\|\mathbf{x}\|_{l^\infty} - \varepsilon \le \|x\|_{l^\infty} \le \|x\|_{l^p} \le \|x\|_{l^\infty} + \varepsilon \le \|\mathbf x\|_{l^\infty} \]
+
+and 
+\[\|\mathbf{x}\|_{l^p} - \varepsilon \le \|x\|_{l^p} \le \|x\|_{l^\infty} + \varepsilon \le \|\mathbf x\|_{l^\infty} + \varepsilon\]
+
+Considering the conclusion of 3.5
+
+\[\|x\|_{l^\infty} \le \|x\|_{l^p}\]
+
+which implies \(\|\mathbf x\|_{l^\infty} - \varepsilon \le \|\mathbf x\|_{l^p}\). Thus 
+\[\|\mathbf x\|_{l^\infty} - \varepsilon \le \|\mathbf x\|_{l^p} \le \|\mathbf x\|_{l^\infty} + 2\varepsilon\]
+
+Thus the limitation holds.
+
+% 3.7
+\subsection{Solution}
+Notice that \(p/q > 1\). And the series
+
+\[\sum_{i = 1}^\infty \frac{1}{[n(\ln(n))^2]^k}\]
+
+is converge for \(k \ge 1\) and diverges for \(k < 1\). Thus construct \(x_n = a_n\), where \(a_n\) is just the term of the series above.
+
+
+% 3.8
+\subsection{Solution}
+As \(U \subseteq X\) is a open normed vector space. There exist \(\varepsilon > 0,\ s.t.\ B(0, \varepsilon) \subseteq U\). Considering the vector space is closed onto the add, scalar-multiply, thus \(k B(0, \varepsilon) \subset U\). Considering
+\[\forall x \in X,\ x \in \frac{2\|x\|}{\varepsilon}B(0, \varepsilon) \cap X\]
+Thus \(x \in U\), which implies \(X \subset U\). Thus \(U = X\).
+
+
+% 3.9
+\subsection{Solution}
+Firstly, \(\bar U\) is closed. We need to check whether it's linear subspace. Considering two sequences converges in \(\bar U\), \((x_n) \to x,\ (y_n) \to y\). Then \((x_n + y_n) \to x + y,\ (k x_n) \to kx\) is clearly as the sequence space of \(\bar U\) is subspace of \(\bar U\), thus it's a linear subspace. 
+
+
+
+% 3.10
+\subsection{}
+
+% 3.11
+\subsection{Solution}
+Firstly,
+\[\|f_n - f\|_{L^p}^p = \int_I |f_n(x) - f(x)|^p dx \le \int_I \|f_n - f\|_{\infty}^p dx = \|f_n - f\|_\infty^p\]
+
+thus, \(\|f_n - f\|_{\infty} \to 0 \implies \|f_n - f\|_{\infty}^p \to 0 \implies \|f_n - f\|_{L^p}^p \to 0 \implies \|f_n - f\|_{L^p} \to 0\).
+
+Secondly,
+\[|f_n(x) - f(x)| \le \|f_n - f\|_{\infty}\]
+
+thus it's clearly that \(\|f_n - f\|_{\infty} \to 0 \implies |f_n(x) - f(x)| \to 0\).
+
+
+
+% 3.12
+\subsection{Solution}
+To prove \(c_0(\mathbb K)\) is separable, we can prove it has a countable set with a dense linear span. Here I claim that the set
+\[E := \bigcup_{k = 1}^\infty E_k,\ E_k^i := (0, \ldots, x^i, \ldots)\]
+
+where the k-th coordinate has nonzero the i-th term of sequence \(\{\frac{1}{2^i}\}_{i = 1}^\infty\) satisfies the requirement.
+
+It can be checked as every null sequence can be approximate in the order of coordinates with the help of binary division. Thus \(c_0(\mathbb K)\) is separable.
+
+% 3.13
+\subsection{Solution}
+\begin{itemize}
+    \item Sufficient.
+    
+    Considering \(X\) is separable, then for every vector \(y \in Y\), as \(T\) is bijection, \(T^{-1}(y) \in X\). Note the countable dense subset as \(E = \{x_i\}_{x = 1}^\infty\). Consider \(T(E)\) is countable, we need to check whether it's dense.
+    
+    There exist a sequence \((x_i)_{i = 1}^{\infty} \subset E\) such that
+    
+    \[\|x_i - T^{-1}(y)\|_X \to 0\]
+    \
+    Then,
+    \[c_1 \|x_i - T^{-1}(y)\|_X \le \|T(x_i) - y\|_Y \le c_2 \|x_i - T^{-1}(y)\|_X \implies \|T(x_i) - y\|_Y = 0\]
+    \
+    Thus the set \(T(E) \subset Y\) is the countable dense subset.
+
+    \item Necessary.
+    
+    As the same, and use the truth
+    \[c_1' \|y\|_Y \le \|T^{-1}(y)\|_X \le c_2' \|y\|_Y \]
+    one can prove it as same as the sufficient.
+\end{itemize}
+
+% 3.14
+\subsection{}
+
+% 3.15
+\subsection{}
+
+
+% 3.16
+\subsection{Solution}
+
+\begin{itemize}
+    \item Sufficient.
+    
+    Consider \((X, \|\cdot\|)\) is separable, then it has a countable dense subset, note it as \(E = \{x_1, x_2, \ldots\}\). Considering 
+    \[X_i := \mathrm{Span}(x_i)\]
+    Then \(X = \mathrm{Span}(E) = \bigcup_{i = 1}^\infty X_i\), which is just the hypothesis.
+
+    \item Necessary.
+    
+    Considering \(X\) can be written as the form. Notice that every \(X_i\) is finite dimension, we can find a basis, note it as \(E_i := \{v_i^1, v_i^2, \ldots, v_i^{n_i}\}\). 
+    
+    Then
+    \[X = \bigcup_{i = 1}^\infty X_i = \bigcup_{i = 1}^\infty \mathrm{Span}(E_i)\]
+
+    And considering \(E := \bigcup_{i = 1}^\infty E_i\) must be contable, thus
+
+    \[X = \bigcup_{i = 1}^\infty \mathrm{Span}(E_i) = \mathrm{Span}(E)\]
+
+    the set \(E\) is just a countable dense subset.
+\end{itemize}
+
+\section{Complete Normed Spaces}
+
+\subsection*{4.7 Solution}
+\begin{enumerate}
+    \item Necessary.
+    
+    Considering
+    \[x(t) = x_0 + \int_0^t f(x(s)) ds,\ t \in [0, T]\]
+
+    Derivate the equation with variable \(t\), one can get 
+    \[\dot x(t) = f(x(t)) \implies \dot x = f(x)\]
+    And \(x(t) = x_0\) is also cleary.
+
+    \item Sufficient.
+    
+    Considering integrate the equation, and use the initial condition, one can derive the formula
+    \[x(t) = x_0 + \int_{0}^t f(x(s)) ds\]
+\end{enumerate}
+
+
+\subsection*{4.8 Solution}
+According the conclusion in 4.7, one can get that the uniqueness of the solution is equivalent to the uniqueness of the integral from.
+
+Considering an operator \(I\) by 
+\[I(x) = x_0 + \int_0^t f(x(s)) ds \]
+
+One can notice that 
+\begin{align*}
+    |I(x_1) - I(x_2)| &= |\int_{0}^t f(x_1(s)) ds + \int_{0}^t f(x_2(s)) ds |\\
+    &\le \int_{0}^t |f(x_1(s)) - f(x_2(s))| ds\\
+    &\le L \int_{0}^t |x_1 - x_2| ds \\
+    &\le L \int_{0}^t \|x_1 - x_2\|_{\infty} \\
+\end{align*}
+
+thus
+\[\|I(x_1) - I(x_2)\|_{\infty} \le LT\|x_1 - x_2\|_{\infty}\]
+
+When \(LT < 1\), the operator \(I\) is a contraction, thus has an unique fixed point. And the unique solution in any subinterval of \([0, T]\) has a condition \(LT' \le LT < 1\), which also means the unique solution exist. And use the initial condition \(x_0\), one can derive that the solution in any interval \([0, t]\) has the same formula, thus in the interval \([a, b] \subseteq [0, T]\).
+
+
+
+
+\section{Finite Dimension Normed Spaces}
+
+\subsection*{5.4 Solution}
+Considering \(x\) is a point in \(X - Y\), then there exist \((y_i)\) such that \(d(x, Y) = \lim_{i \to \infty}\|x - y_i\|\). As \(Y\) is a subspace thus closed, and there exist some subsequece such that \((y_{i_k})\) converges to a point \(y \in Y\). Considering the sequence \(\|x - y_{i_k}\|\), as \(\|\cdot\|\) is a continuous function, is also converges. Thus \(\|x - y_{i_k}\| \to \|x - y\| = dist(x, Y)\), with \(y \in Y\).
+
+\subsection*{5.5 Solution}
+\begin{enumerate}
+\item Considering 
+\[dist(ax, Y) = \inf_{y \in Y} \|ax - y\| = |a| \inf_{y \in Y} \|x - \frac{y}{a}\|\]
+
+And for every \(y \in Y\), \(y/a \in Y\) as \(Y\) is a subspace, thus the two inferior is equivalent. 
+
+\item Considering
+\[dist(x + w, Y) = \inf_{y \in Y}\|x + w - y\| = \inf_{y \in Y}\|x - (y - w)\|\]
+
+Given the \(w\), for every \(y \in Y\), \(y - w \in Y\). As same as above, the two inferior is equivalent.
+
+
+\end{enumerate}
+
+
+\subsection*{5.6 Solution}
+Considering \(Y\) is a proper subspace of \(X\). There exist \(x \in X - Y\), which means that \(dist(x, Y) = \varepsilon > 0\). Otherwise, if \(dist(x, Y) = 0\), there exist \((y_n) \in Y\) such that \(\|y_n - x\| \to 0\), what's more, existence of \((y_{n_k}) \to x\) implies \(x\) is a limit point of \(Y\) thus \(x \in Y\), which is contradict to the hypothesis. Thus 
+\[\forall\ r > 0, dist(\frac{r}{\varepsilon}x, Y) = \frac{r}{\varepsilon}dist(x, Y) = r\]
+
+\subsection*{5.7 Solution}
+Considering \((e_i)_{i = 1}^\infty\) is a Hamel Basis of \(X\), define \(X_n = Span((e_i)_{i = 1}^n)\). Considering \(y_i\) by \(y_i \in X_i\) and choose \(dist(y_i, X_{i - 1}) = 3^{-i}\). 
+
+Thus \((y_i)_{i = 1}^n\) is Cauchy but can't has a limitation in any \(X_n\) as 
+\[d(y_{n + k + 1}, X_n) \ge 3{-n} - \sum_{i = 1}^k 3^{-(n + i)} \ge 3^{-n} - \sum_{i = 1}^\infty 3^{-(n + i)} = \frac{1}{2} 3^{-n} > 0\]
+
+Thus we got a contradiction.
+
+
+\end{document}

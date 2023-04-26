@@ -1,0 +1,212 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{authblk}
+
+% 习惯最小的题号用自定义的id命令直接打出来
+% TODO: Self definitions.
+% \newcommand{\id}{\subsubsection*}
+% \newcommand{\fc}{\frac}
+
+\usepackage{geometry}
+% 纸张尺寸大小
+% 也可以手动写 left, right, top, bottom 参数
+\geometry{a4paper, scale = 0.8}
+%\geometry{left = 2.54cm, right = 2.54cm, top = 3.17cm, bottom = 3.17cm}
+
+\usepackage{indentfirst}
+\renewcommand{\baselinestretch}{1.2}
+
+
+
+%TODO: Title
+\title{MA302 Homework 4}
+
+%TODO: Author
+\author{WANG Duolei, SID:12012727}
+\affil{wangdl2020@mail.sustech.edu.cn}
+
+
+
+%TODO: Date
+\date{}
+
+%TODO: Theorem, lemma
+
+
+%TODO: Main document
+\begin{document}
+
+\maketitle
+
+% 3.1
+\subsection*{3.1 Solution}
+\begin{itemize}
+    \item Translation invariant.
+    
+    Considering
+    \begin{align*}
+        d(x + z, y + z) &= \|x + z - (y + z)\|\\
+        &= \|x - y\|\\
+        &= d(x, y)\\
+    \end{align*}
+
+    \item Homogeneous.
+    
+    Considering
+    \begin{align*}
+        d(tx, ty) &= \|tx - ty\|\\
+        &= |t|\|x - y\|\\
+        &= |t|d(x, y)\\
+    \end{align*}
+\end{itemize}
+
+
+% 3.5
+\subsection*{3.5 Solution}
+\begin{enumerate}
+    \item The inequality.
+    
+    Considering the left inequality, it's clearly as \(m^p\) is actually a part of the right side. 
+
+    Considering that \(|x_j|^p \le m,\ \forall j\), the right side is clearly holds.
+
+    \item The limitation.
+    
+    Considering
+    \begin{align*}
+        {(m^p)}^{1/p} &\le (\sum_{j = 1}^n |x_j|^p)^{1/p} \le {(nm^p)}^{1/p} \\
+        \implies \|x\|_{l^\infty} &\le \|x\|_{l^p} \le n^{1/p}\|x\|_{l^\infty}\\
+    \end{align*}
+    And \(\lim_{p \to \infty} n^{1/p} = 1,\ \forall n \ge 1\). Thus 
+    \(\|x\|_{l^\infty} = \lim_{p \to \infty}\|x\|_{l^p}\)
+\end{enumerate}
+
+
+% 3.6
+\subsection*{3.6Solution}
+Firstly, considering that in a finite dimension vector space, the property
+\[\|\cdot\|_{l^\infty} < \|\cdot\|_{l^p} \le n^{1/p}\|\cdot\|_{l^\infty}\]
+
+holds.
+
+And for arbitrary vector space, \(\mathbf{x} \in {l}^1\) implies it can minus some remainder to be approximate by finite dimension vector with arbitrary precise. Note the vector as \(x\)
+
+Thus
+\[\|\mathbf{x}\|_{l^\infty} - \varepsilon \le \|x\|_{l^\infty} \le \|x\|_{l^p} \le \|x\|_{l^\infty} + \varepsilon \le \|\mathbf x\|_{l^\infty} \]
+
+and 
+\[\|\mathbf{x}\|_{l^p} - \varepsilon \le \|x\|_{l^p} \le \|x\|_{l^\infty} + \varepsilon \le \|\mathbf x\|_{l^\infty} + \varepsilon\]
+
+Considering the conclusion of 3.5
+
+\[\|x\|_{l^\infty} \le \|x\|_{l^p}\]
+
+which implies \(\|\mathbf x\|_{l^\infty} - \varepsilon \le \|\mathbf x\|_{l^p}\). Thus 
+\[\|\mathbf x\|_{l^\infty} - \varepsilon \le \|\mathbf x\|_{l^p} \le \|\mathbf x\|_{l^\infty} + 2\varepsilon\]
+
+Thus the limitation holds.
+
+% 3.7
+\subsection*{3.7 Solution}
+Notice that \(p/q > 1\). And the series
+
+\[\sum_{i = 1}^\infty \frac{1}{[n(\ln(n))^2]^k}\]
+
+is converge for \(k \ge 1\) and diverges for \(k < 1\). Thus construct \(x_n = a_n\), where \(a_n\) is just the term of the series above.
+
+
+% 3.8
+\subsection*{3.8 Solution}
+As \(U \subseteq X\) is a open normed vector space. There exist \(\varepsilon > 0,\ s.t.\ B(0, \varepsilon) \subseteq U\). Considering the vector space is closed onto the add, scalar-multiply, thus \(k B(0, \varepsilon) \subset U\). Considering
+\[\forall x \in X,\ x \in \frac{2\|x\|}{\varepsilon}B(0, \varepsilon) \cap X\]
+Thus \(x \in U\), which implies \(X \subset U\). Thus \(U = X\).
+
+
+% 3.9
+\subsection*{3.9 Solution}
+Firstly, \(\bar U\) is closed. We need to check whether it's linear subspace. Considering two sequences converges in \(\bar U\), \((x_n) \to x,\ (y_n) \to y\). Then \((x_n + y_n) \to x + y,\ (k x_n) \to kx\) is clearly as the sequence space of \(\bar U\) is subspace of \(\bar U\), thus it's a linear subspace. 
+
+
+
+
+% 3.11
+\subsection*{3.11 Solution}
+Firstly,
+\[\|f_n - f\|_{L^p}^p = \int_I |f_n(x) - f(x)|^p dx \le \int_I \|f_n - f\|_{\infty}^p dx = \|f_n - f\|_\infty^p\]
+
+thus, \(\|f_n - f\|_{\infty} \to 0 \implies \|f_n - f\|_{\infty}^p \to 0 \implies \|f_n - f\|_{L^p}^p \to 0 \implies \|f_n - f\|_{L^p} \to 0\).
+
+Secondly,
+\[|f_n(x) - f(x)| \le \|f_n - f\|_{\infty}\]
+
+thus it's clearly that \(\|f_n - f\|_{\infty} \to 0 \implies |f_n(x) - f(x)| \to 0\).
+
+
+
+% 3.12
+\subsection*{3.12 Solution}
+To prove \(c_0(\mathbb K)\) is separable, we can prove it has a countable set with a dense linear span. Here I claim that the set
+\[E := \bigcup_{k = 1}^\infty E_k,\ E_k^i := (0, \ldots, x^i, \ldots)\]
+
+where the k-th coordinate has nonzero the i-th term of sequence \(\{\frac{1}{2^i}\}_{i = 1}^\infty\) satisfies the requirement.
+
+It can be checked as every null sequence can be approximate in the order of coordinates with the help of binary division. Thus \(c_0(\mathbb K)\) is separable.
+
+% 3.13
+\subsection*{3.13 Solution}
+\begin{itemize}
+    \item Sufficient.
+    
+    Considering \(X\) is separable, then for every vector \(y \in Y\), as \(T\) is bijection, \(T^{-1}(y) \in X\). Note the countable dense subset as \(E = \{x_i\}_{x = 1}^\infty\). Consider \(T(E)\) is countable, we need to check whether it's dense.
+    
+    There exist a sequence \((x_i)_{i = 1}^{\infty} \subset E\) such that
+    
+    \[\|x_i - T^{-1}(y)\|_X \to 0\]
+    \
+    Then,
+    \[c_1 \|x_i - T^{-1}(y)\|_X \le \|T(x_i) - y\|_Y \le c_2 \|x_i - T^{-1}(y)\|_X \implies \|T(x_i) - y\|_Y = 0\]
+    \
+    Thus the set \(T(E) \subset Y\) is the countable dense subset.
+
+    \item Necessary.
+    
+    As the same, and use the truth
+    \[c_1' \|y\|_Y \le \|T^{-1}(y)\|_X \le c_2' \|y\|_Y \]
+    one can prove it as same as the sufficient.
+\end{itemize}
+
+
+
+
+% 3.16
+\subsection*{3.16 Solution}
+
+\begin{itemize}
+    \item Sufficient.
+    
+    Consider \((X, \|\cdot\|)\) is separable, then it has a countable dense subset, note it as \(E = \{x_1, x_2, \ldots\}\). Considering 
+    \[X_i := \mathrm{Span}(x_i)\]
+    Then \(X = \mathrm{Span}(E) = \bigcup_{i = 1}^\infty X_i\), which is just the hypothesis.
+
+    \item Necessary.
+    
+    Considering \(X\) can be written as the form. Notice that every \(X_i\) is finite dimension, we can find a basis, note it as \(E_i := \{v_i^1, v_i^2, \ldots, v_i^{n_i}\}\). 
+    
+    Then
+    \[X = \bigcup_{i = 1}^\infty X_i = \bigcup_{i = 1}^\infty \mathrm{Span}(E_i)\]
+
+    And considering \(E := \bigcup_{i = 1}^\infty E_i\) must be contable, thus
+
+    \[X = \bigcup_{i = 1}^\infty \mathrm{Span}(E_i) = \mathrm{Span}(E)\]
+
+    the set \(E\) is just a countable dense subset.
+\end{itemize}
+
+\end{document}
