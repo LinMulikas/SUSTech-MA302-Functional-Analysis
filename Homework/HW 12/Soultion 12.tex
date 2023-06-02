@@ -1,0 +1,95 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{authblk}
+% 习惯最小的题号用自定义的id命令直接打出来% TODO: Self definitions.% \newcommand{\id}{\subsubsection*}%
+\usepackage{geometry}
+% 纸张尺寸大小
+% 也可以手动写 left, right, top, bottom 参数
+\geometry{a4paper, scale = 0.8}
+%\geometry{left = 2.54cm, right = 2.54cm, top = 3.17cm, bottom = 3.17cm}
+\usepackage{indentfirst}
+\renewcommand{\baselinestretch}{1.2}
+%TODO: Title
+\title{Functional Analysis Homework}
+%TODO: Author
+\author{WANG Duolei, SID:12012727}
+\affil{wangdl2020@mail.sustech.edu.cn}
+%TODO: Date
+\date{}
+%TODO: Theorem, lemma
+%TODO: Main document
+\begin{document}
+\maketitle
+\subsection*{19.1 Solution}
+Considering the Riesz Representation Theorem, we can derive a vector \(u_{\phi} \in U \) such that
+\[(x, u_\phi) = \phi(x), \forall x \in U\]
+Also, the \(u_\phi \in U\), which means we can define a map \(f_{\phi} \in H^*\) by 
+\[f_{\phi}(x) = (x, u_\phi), \forall x \in H\]
+One can check that the \(f_\phi\) clearly satisfies the property that \(f(x) = \phi(x), \forall x \in U\).
+
+Now we check the Dual Norm of \(f_\phi\). And clearly
+\[f(x) = (x, u_{\phi})_{H} \le \|x\| \|u_\phi\|\]
+has the same norm as \(\phi\). And the inverse inequality 
+\[\sup_{\|x\| = 1} f(x) = \|u_\phi\|_H = \|u_\phi\|_U\]
+also holds.
+
+Thus \(\|f\|_{H^*} = \phi_{U^*}\).
+
+\subsection*{19.2 Solution}
+
+As the \(u_\phi \in U\) is unique, the definition of \(f\) is clearly unique. Also, one can check it by assuming there exists another \(\bar f\) such that \(\bar f = f\). Which also means
+\[(x, u_f) = (x, u_{\bar f}), \forall x \in H\]
+And the \(H\) is a Hilbert Space, which means
+\[(x, u_f - u_{\bar f}) = 0, \forall x \in H\]
+
+This is equal to \(u_f - u_{\bar f} = 0\), and also \(u_f = u_{\bar f}\).
+
+
+\subsection*{19.3 Solution}
+For any \(x \in \bar U\), there exists a sequence \((x_n) \in U\) such that \(x_n \to x\). Define
+\[\phi(x) = \lim_{n \to \infty} \hat \phi(x_n)\]
+
+It's clearly that the \(\phi\) is just the continuous extension. And the linear also holds in the process of limitation.
+
+As \(|\hat \phi(x)| \le M \|x\| \), and the norm is continuous as a map. Thus the inequality holds, which means 
+\[|\phi(x)| \le M\|x\|\]
+
+\subsection*{19.4 Solution}
+
+
+\begin{enumerate}
+\item[(i)] Considering that
+\[p(0) = p(k0) = |k|p(0), \forall k \in \mathbb{K}\]
+Thus, \((1 - |k|)p(0) = 0\). Choose the \(k\) to be a number with the norm not be one. One can get the result.
+
+\item[(ii)] One can notice that 
+\[p(x) = p(y + x - y) \le p(y) + p(x - y)\]
+    
+and 
+\[p(y) = p(x - y + y) \le p(x - y) + p(y)\]
+
+Thus, 
+\[p(x) - p(y) \le p(x - y),\ p(y) - p(y) \le p(y - x) \implies |p(x) - p(y)| \le p(x - y)\]
+
+\item[(iii)] Choose the \(y\) to be zero in the \((ii)\), one can get the result \(|p(x)| \le p(x)\). And \(p(x) \le |p(x)|\) implies that \(p(x) = |p(x)|\), which also means \(p(x) \ge 0\).
+
+\item[(iv)] Noted the set by \(A\). Assume \(x, y \in A\). Thus,
+\[0 \le p(x + y) \le p(x) + p(y) = 0 \implies p(x + y) = 0 \implies x + y \in A\]
+
+And \(p(kx) = |k|p(x) = 0\), which also implies \(kx \in A\).
+
+Thus the subset \(A\) also be a subspace.
+
+
+\end{enumerate}
+
+
+
+
+\end{document}
